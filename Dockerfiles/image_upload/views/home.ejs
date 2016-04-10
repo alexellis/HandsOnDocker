@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <% include header %>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h3>image_upload</h3>
+        <p>Upload photos below, then view the gallery.</p>
+      </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          Upload
+        </div>
+        <div class="panel-body">
+          <form id="uploader" action="/upload" method="post" enctype="multipart/form-data" class="form-group">
+            <div class="input-group" style="padding-bottom: 20px">
+              <span class="input-group-addon">Image</span>
+              <input type="file" name="photo" class="form-control" id="photo_upload" accept="image/*"></input>
+            </div>
+            <div >
+            <button type="submit" class="btn btn-default">Upload</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <% if(images.length) { %>
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          Gallery
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <% for(var i=0;i<images.length;i++) { %>
+            <div class="col-md-3 col-sm-4 col-xs-6 col-lg-2" class="thumbnail">
+                <img class='img-thumbnail' src='/uploads/<%=images[i] %>'> </div>
+            <% } %>
+            </div>
+          </div>
+      </div>
+      <% } %>
+    </div>
+</body>
+</html>
