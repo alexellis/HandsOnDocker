@@ -2,7 +2,7 @@
 
 Other links:
 
-* [Pre-requisites](https://github.com/alexellis/dockerlabs/)
+* [Pre-requisites](https://github.com/alexellis/handsondocker/)
 * [Supporting blog article](http://blog.alexellis.io/dockerlabs/)
 
 ## Before we start
