@@ -1,7 +1,7 @@
 # Hands-on Docker
-Fast-track your Docker skills through a dozen progressive and practical labs.
+Get hands-on with Docker through a dozen self-paced and progressive labs.
 
-Looking for *DockerLabs*? This project has been re-named to make it clear that it is not an official part of the Docker trademark.
+> Were you looking for *DockerLabs*? This project has been renamed to HandsOnDocker, so please update your links.
 
 [Start the labs!](/Labs.md)
 
