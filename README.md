@@ -1,7 +1,7 @@
 # Hands-on Docker
 Get hands-on with Docker through a dozen self-paced and progressive labs.
 
-> Were you looking for *DockerLabs*? This project has been renamed to HandsOnDocker, so please update your links.
+> Were you looking for *DockerLabs*? You're in the right place, the project just has a new name.
 
 [Start the labs!](/Labs.md)
 
