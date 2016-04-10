@@ -1,4 +1,4 @@
-# Hands-on Docker
+# Hands-On Docker
 Get hands-on with Docker through a dozen self-paced and progressive labs.
 
 > Were you looking for *DockerLabs*? You're in the right place, the project just has a new name.
