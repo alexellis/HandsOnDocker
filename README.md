@@ -1,10 +1,9 @@
 # Hands-On Docker
 Get hands-on with Docker through a dozen self-paced and progressive labs.
 
-> Were you looking for *DockerLabs*? You're in the right place, the project just has a new name.
+### [Start the labs now!](/Labs.md)
 
-[Start the labs!](/Labs.md)
-
+If you're coming back later, or just like the Labs, please **Give Us a Star** at the top right.
 
 #### Prerequisites:
 
@@ -26,3 +25,5 @@ Get hands-on with Docker through a dozen self-paced and progressive labs.
 #### Suggestions/corrections?
 
 Please fork the repository and raise a pull request or create an issue.
+
+> Were you looking for *DockerLabs*? You're in the right place, the project just has a new name.
