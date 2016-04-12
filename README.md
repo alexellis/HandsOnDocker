@@ -3,7 +3,9 @@ Get hands-on with Docker through a dozen self-paced and progressive labs.
 
 ### [Start the labs now!](/Labs.md)
 
-If you're coming back later, or just like the Labs, please **Give Us a Star** at the top right.
+If you're coming back later, or just like the Labs, please **Give Us a Star**.
+
+<iframe src="https://ghbtns.com/github-btn.html?user=alexellis&repo=handsondocker&type=star&count=false&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 
 #### Prerequisites:
 
