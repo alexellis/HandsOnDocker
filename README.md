@@ -12,11 +12,12 @@ Get hands-on with Docker through a dozen self-paced and progressive labs.
 - [Git for Windows](https://git-scm.com/downloads)
 
 #### What's here?
-- [Labs.md](/Labs.md) labs instructions
-- [Dockerfiles/](/Dockerfiles) samples used for the labs
+- [/Labs.md](/Labs.md) a dozen self-paced labs
+- [/Dockerfiles/](/Dockerfiles) samples used for the labs
 
 #### Additional resources:
 
+* **[Build a Raspberry PI Cluster with Docker Swarm](http://blog.alexellis.io/linux-user-developer-magazine/)**
 * [Running an ASP.NET MVC application on Mono](http://www.mono-project.com/docs/web/aspnet/)
 * [Getting started with .NET Core on Docker](http://dotnet.github.io/getting-started/)
 * [Docker Compose](https://docs.docker.com/compose/overview/) seamless linking of multiple containers.
