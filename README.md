@@ -3,7 +3,7 @@ Get hands-on with Docker through a dozen self-paced and progressive labs.
 
 ### [Start the labs now!](/Labs.md)
 
-**Star the repo** if you like the project and so you can find it again later. 
+> Please support the project by giving the repo **a Star**.
 
 #### Prerequisites:
 
