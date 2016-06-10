@@ -1,0 +1,10 @@
+version: "2.0"
+services:
+  counter:
+    build: "./counter/"
+    ports: 
+      - "3000:3000"
+    depends_on: 
+      - redis
+  redis:
+    image: redis:latest
