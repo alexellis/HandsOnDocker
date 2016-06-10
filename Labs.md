@@ -540,9 +540,9 @@ See also: [Linking containers on docker.io](https://docs.docker.com/v1.8/usergui
 ## Lab 11b Container linking on a single host
 ### Using Docker Compose to start dependent services
 
-In the previous lab we linked a *Node.js* console application to a *redis* database. In this lab we the *Docker Compose* tool (installed with Toolbox) to start two linked services. A YAML configuration file is used to define all parameters. 
+In the previous lab we linked a *Node.js* console application to a *redis* database. In this lab we look at the *Docker Compose* tool (installed with Toolbox) to start two linked services. A YAML configuration file is used to define all parameters. 
 
-The Compose tool takes advantage of Docker 1.11 features like network overlays and embedded DNS to make linking much simpler than with legacy linking 
+*Docker Compose* takes advantage of Docker Engine 1.11 features like network overlays and embedded DNS to make linking much simpler than with legacy linking.
 
 Let's define a docker-compose.yml file first:
 
@@ -561,7 +561,7 @@ services:
 ```
 
 
-Here is our modified Node.js application found in *./compose_counter/counter*. It uses a HTTP server listening on port 3000 to increment a hit counter and return the value back to a browser. Instead of using complex environmental variables we can  now make use of the container's name and port. 
+Here is our modified Node.js application found in *./compose_counter/counter*. It uses a HTTP server listening on port 3000 to increment a hit counter and return the value back to a browser. Instead of using complex environmental variables we can  now make use of the *redis* container's name and port. 
 
 ```
 var redis = require ('node-redis')
@@ -601,7 +601,7 @@ CMD ["node", "app.js"]
 Enter the compose_counter folder and type in:
 
 ```
-# docker-compose up --build -d
+# docker-compose up -d --build
 ```
 
 * `up` starts the services defined in our `.yml` file. Use two spaces for indentation in the file.
@@ -619,6 +619,17 @@ Stopping composecounter_redis_1 ... done
 Removing composecounter_counter_1 ... done
 Removing composecounter_redis_1 ... done
 Removing network composecounter_default
+```
+
+**Extra points:**
+
+Docker compose can also be used to scale out a website or individual service with the `docker-compose scale counter=10` command for instance.
+
+You would also need to change the static port mapping `ports: "3000:3000` to a dynamic one like below:
+
+```
+    ports: 
+      - 3000/TCP
 ```
 
 See also: [Docker Compose: overview](https://docs.docker.com/compose/)
