@@ -449,7 +449,7 @@ Linux 3c3ba53430fd 4.1.13-boot2docker #1 SMP Fri Nov 20 19:05:50 UTC 2015 x86_64
 There are several other ways of making changes persist: see [Managing data in containers](https://docs.docker.com/engine/userguide/dockervolumes/) for more information.
 
 ## Lab 11
-### Container interaction
+### Container interaction (legacy linking)
 
 It is possible to use Docker containers as if they were virtual-machines and install all our software into one monolithic image - i.e. SCM, DB, code and logging tools etc.
 
@@ -536,6 +536,103 @@ hit_count 3
 ```
 
 See also: [Linking containers on docker.io](https://docs.docker.com/v1.8/userguide/dockerlinks/)
+
+## Lab 11b Container linking on a single host
+### Using Docker Compose to start dependent services
+
+In the previous lab we linked a *Node.js* console application to a *redis* database. In this lab we look at the *Docker Compose* tool (installed with Toolbox) to start two linked services. A YAML configuration file is used to define all parameters. 
+
+*Docker Compose* takes advantage of Docker Engine 1.11 features like network overlays and embedded DNS to make linking much simpler than with legacy linking.
+
+Let's define a docker-compose.yml file first:
+
+```
+version: "2.0"
+services:
+  counter:
+    build: "./counter/"
+    ports: 
+      - "3000:3000"
+    depends_on: 
+      - redis
+  redis:
+    image: redis:latest
+
+```
+
+
+Here is our modified Node.js application found in *./compose_counter/counter*. It uses a HTTP server listening on port 3000 to increment a hit counter and return the value back to a browser. Instead of using complex environmental variables we can  now make use of the *redis* container's name and port. 
+
+```
+var redis = require ('node-redis')
+var http = require('http');
+
+var redis_host = "redis";
+var redis_port = 6379;
+var http_port = 3000;
+
+var client = redis.createClient({port: redis_port, host:redis_host});
+
+http.createServer(function (req, res) {  
+  console.log(new Date().toUTCString() + " - " + req.url);
+
+  var val = client.incr("hit_count", function(err, val) {
+    console.log("hit_count "+ val);
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('hit_count: '+val+'\n');
+  });
+
+}).listen(http_port);
+
+```
+
+We add an *EXPOSE 3000* directive to the Dockerfile.
+
+```
+FROM mhart/alpine-node:4
+
+WORKDIR /root
+RUN npm install node-redis
+ADD ./app.js  ./app.js
+EXPOSE 3000
+CMD ["node", "app.js"]
+```
+
+Enter the compose_counter folder and type in:
+
+```
+# docker-compose up -d --build
+```
+
+* `up` starts the services defined in our `.yml` file. Use two spaces for indentation in the file.
+* `-d` this runs the services detached from the console, similar to `docker run -d`.
+* `--build` this forces a build of any services we define with a `build:` entry. Anything with an `image:` config entry will be looked up in the local library or pulled from the Docker Hub.
+
+Now use `curl http://localhost:3000` or a web browser to increment the counter and test the services.
+
+If you want to check the output of your containers, type in `docker-compose logs` and when you are ready to tear-down the services type in:
+
+```
+$ docker-compose down
+Stopping composecounter_counter_1 ... done
+Stopping composecounter_redis_1 ... done
+Removing composecounter_counter_1 ... done
+Removing composecounter_redis_1 ... done
+Removing network composecounter_default
+```
+
+**Extra points:**
+
+Docker compose can also be used to scale out a website or individual service with the `docker-compose scale counter=10` command for instance.
+
+You would also need to change the static port mapping `ports: "3000:3000` to a dynamic one like below:
+
+```
+    ports: 
+      - 3000/TCP
+```
+
+See also: [Docker Compose: overview](https://docs.docker.com/compose/)
 
 ## Lab 12
 ### Persistence revisited with data containers
