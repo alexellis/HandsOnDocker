@@ -15,7 +15,7 @@ Install Docker Toolbox for the classic experience
 - [Install Docker Toolbox (Windows/Mac)](https://docs.docker.com/engine/installation/#on-osx-and-windows)
 - [Install Docker package (Linux)](https://docs.docker.com/engine/installation/)
 
-Git is also required for following the instructions on Windows. This should be installed on your Mac or Linux machine already. 
+Git is also required for following the instructions on Windows.
 
 - [Git for Windows](https://git-scm.com/downloads)
 
@@ -35,4 +35,3 @@ Git is also required for following the instructions on Windows. This should be i
 
 Please fork the repository and raise a pull request or create an issue.
 
-> Were you looking for *DockerLabs*? You're in the right place, the project just has a new name.
