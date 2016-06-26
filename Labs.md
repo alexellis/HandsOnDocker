@@ -13,6 +13,10 @@ Please support the project by giving it **a Star** on Github.
 
 ## Before we start
 
+> Docker beta for Mac and Windows was opened to the public during Day 1 of Dockercon 2016. You could try this as an alternative to Docker Toolbox and then follow the instructions for 'Linux'. 
+
+> [Docker Beta Installation](https://docs.docker.com)
+
 If you have a Windows or Mac laptop, then you will need to install the Docker toolbox before continuing. This package installs [Oracle VirtualBox](https://www.virtualbox.org) along with a tiny Linux virtual machine called *boot2docker*. The *boot2docker* ISO is around 32MB and VirtualBox will provision a hard drive of around 20GB - this should be plenty for the labs.
 
 If you are running on Linux:
