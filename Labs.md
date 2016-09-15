@@ -13,11 +13,11 @@ Please support the project by giving it **a Star** on Github.
 
 ## Before we start
 
-> Docker beta for Mac and Windows was opened to the public during Day 1 of Dockercon 2016. You could try this as an alternative to Docker Toolbox and then follow the instructions for 'Linux'. 
+> If you are on Mac or Windows 10 then install Docker for Mac or Windows instead of Docker Toolbox, then follow the instructions for "Linux".
 
 > [Docker Beta Installation](https://docs.docker.com)
 
-If you have a Windows or Mac laptop, then you will need to install the Docker toolbox before continuing. This package installs [Oracle VirtualBox](https://www.virtualbox.org) along with a tiny Linux virtual machine called *boot2docker*. The *boot2docker* ISO is around 32MB and VirtualBox will provision a hard drive of around 20GB - this should be plenty for the labs.
+If you have a Windows 7 or older Mac laptop, then you will need to install the Docker toolbox before continuing. This package installs [Oracle VirtualBox](https://www.virtualbox.org) along with a tiny Linux virtual machine called *boot2docker*/Moby. The *boot2docker* ISO is around 32MB and VirtualBox will provision a hard drive of around 20GB - this should be plenty for the labs.
 
 If you are running on Linux:
 * Head over to the [Docker homepage](http://www.docker.com) and follow the instructions to install the latest version of the package directly on your system.
@@ -25,22 +25,23 @@ If you are running on Linux:
 ## Lab 1
 ### Check that everything's OK
 
-#### You're on a Mac
+#### You're on a Mac with Docker ToolBox
 On a Mac you will use the docker-machine tool to start up the *boot2docker* image and then point the docker client to it through environmental variables.
 
 ```
-# docker-machine start default
+# docker-machine start
 ```
 
 Now that the virtual machine has been started we can point the docker client to the remote daemon:
 
 ```
-# eval "$(docker-machine env default)"
+# eval "$(docker-machine env)"
 ```
 
-Running `docker-machine env default` will give you key information about the remote daemon, and `docker-machine ip default` will show you the IP address of the virtual machine. This will be useful for accessing services running within the machine later on.
+Running `docker-machine env` will give you key information about the remote daemon, and `docker-machine ip` will show you the IP address of the virtual machine. This will be useful for accessing services running within the machine later on.
 
-#### You're on Windows
+#### You're on Windows 7
+
 If you are on Windows, then make sure that virtualization is enabled in your BIOS. After this find the *Docker Quickstart Terminal* shortcut and launch it.
 
 ```
@@ -77,11 +78,13 @@ The IP address for accessing websites etc with be `localhost` or whatever addres
 ## Lab 2
 ### Finding images on the Docker Hub
 
-Docker provides a cloud service called *Hub* where you can pull (download) images without having an account or signing-in. You can also freely push (upload) images that you have created on your local machine. You can even link the Hub to Github to create automated builds for your projects.
+Docker provides a cloud service called *the Hub* where you can pull (download) pre-built images shared by Software vendors and individuals. You won't need an account to pull an image from the Hub. You can also freely push (upload) images that you have created on your local machine if you sign up for a Hub account. You can even link your Hub account to Github to create automated builds for your projects.
 
-Some of the images available are marked as 'Official' which means that they have been produced by a software vendor through an automated script. I would be weary of using images from unknown/unverified sources since they could contain malicious code.
+Some of the images available are marked as 'Official' which means that they have been produced by a software vendor through an automated script. I would be weary of using images from unknown/unverified sources since they could contain malicious code. Images containing mallicous code are known as *poison images*.
 
-Image can be starred through an account on the Docker Hub webpage, it's a good indication of how popular an image is and is used to rank the search results.
+> Tools exist to scan images for Common Vulnerabilities and Exposures (CVE), these are important in the enterprise and should be part of your CI workflow. 
+
+Images can be starred through the Docker Hub webpage - a high star count is a good indication of useful images and is used to rank search results.
 
 **Busybox** is a minimal set of Linux command line utilities compiled into a single small binary. Let's see if we can find the image in the Hub.
 
@@ -98,7 +101,7 @@ peelsky/zulu-openjdk-busybox                                                   1
 ...
 ```
 
-In this example there is an official image available with a relatively high star count.
+In this example there is an official image available which also has a very high star count. 
 
 **Truncated output**
 
@@ -111,9 +114,9 @@ docker search --no-trunc=true mongo
 ## Lab 3
 ### Pulling an image and running it
 
-*learnyounode* is a interactive coding tutorial produced by [nodeschool](http://nodeschool.io) for learning Node.js. It is normally installed through Node's package manager (npm) as a software package, before being run through the `learnyounode` command. This traditional installation requires that you have Node.js installed on your local system, but we will pull a public image down from the Hub and use that instead.
+*learnyounode* is a interactive coding tutorial produced by [nodeschool](http://nodeschool.io) for learning Node.js. It is normally installed through Node's package manager (npm) as a software package. Once installed it makes the `learnyounode` command available. This traditional installation requires that you have Node.js installed on your local system, but we will pull a public image down from the Hub and use that instead. You won't need to install Node.js on your computer. 
 
-Traditional installation:
+This is what the traditional installation would have looked like:
 
 ```
 $ npm install -g learnyounode
