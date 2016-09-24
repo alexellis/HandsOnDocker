@@ -31,7 +31,10 @@ Git is also required for following the instructions on Windows.
 * [Docker Compose](https://docs.docker.com/compose/overview/) seamless linking of multiple containers.
 * [Docker Swarm](https://docs.docker.com/swarm/overview/) documentation - native clustering of Docker hosts.
 
-#### Suggestions/corrections?
+#### Comments, questions or suggestions?
 
-Please fork the repository and raise a pull request or create an issue.
+Please raise an issue or get in touch @ [alexellisuk](https://twitter.com/alexellisuk).
 
+#### Contributions:
+
+Please create an issue before going ahead and working on a PR.
