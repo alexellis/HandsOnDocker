@@ -179,7 +179,7 @@ Now we will design the Dockerfile.
 **Dockerfile**
 
 ```
-FROM mhart/alpine-node:4
+FROM mhart/alpine-node:4.4
 
 ADD ./app.js /app.js
 CMD ["/usr/bin/node", "/app.js"]
@@ -475,7 +475,7 @@ Let's start by running a redis DB and then add a Dockerfile for a node.js applic
 Dockerfile
 
 ```
-FROM mhart/alpine-node:4
+FROM mhart/alpine-node:4.4
 
 WORKDIR /root
 RUN npm install node-redis
@@ -596,7 +596,7 @@ http.createServer(function (req, res) {
 We add an *EXPOSE 3000* directive to the Dockerfile.
 
 ```
-FROM mhart/alpine-node:4
+FROM mhart/alpine-node:4.4
 
 WORKDIR /root
 RUN npm install node-redis
