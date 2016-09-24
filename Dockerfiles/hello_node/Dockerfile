@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:4
+FROM mhart/alpine-node:4.4
 
 ADD ./app.js /app.js
 CMD ["/usr/bin/node", "/app.js"]

@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:4
+FROM mhart/alpine-node:4.4
 
 USER root
 RUN mkdir -p /var/web
