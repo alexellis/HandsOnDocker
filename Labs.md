@@ -202,6 +202,62 @@ If a build succeeds then a new image will be found in the host's library, check 
 
 **Note: Every time you alter a file used in the image, or the Dockerfile itself, you must run `docker build` again for the changes to take effect.**
 
+## Lab 4b
+### Designing a Dockerfile for a web-server (hello_java)
+
+If you are more familiar with Java than with Node.js, you can use this Java example to build your image. Nevertheless you should read the lab 4 section to get a good understanding what you are doing. Lab 4b only contains the differences between the Node.js and Java part.
+
+Create a new directory and then use your favourite text editor to add `src/Main.java`
+
+* `mkdir hello_java`
+* `cd hello_java`
+
+**src/Main.java**
+
+```
+import com.sun.net.httpserver.HttpServer;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+
+public class Main {
+  public static void main(String[] args) throws IOException {
+    HttpServer server = HttpServer.create(new InetSocketAddress("0.0.0.0", 3000), 0);
+    server.createContext("/", httpExchange -> {
+      String response = "Hello, Docker.\n";
+      httpExchange.sendResponseHeaders(200, response.length());
+      OutputStream os = httpExchange.getResponseBody();
+      os.write(response.getBytes());
+      os.close();
+    });
+    server.setExecutor(null);
+    System.out.println("Server running at http://0.0.0.0:3000/");
+    server.start();
+  }
+}
+```
+
+Now we will design the Dockerfile.
+
+**Dockerfile**
+
+```
+FROM openjdk:8-jdk-alpine
+ADD ./src/Main.java /Main.java
+RUN javac Main.java
+CMD ["java", "Main"]
+```
+
+In addition to the keywords `FROM`, `ADD` and `CMD` in lab 4, we are also using `RUN`. The `RUN` instruction compiles our `Main.java` file into a bytecode class file.
+
+To build the `hello_java` image type in the following:
+
+```
+docker build -t hello_java .
+```
+
+**Note: For the following labs use `hello_java` instead of `hello_node`.**
+
 ## Lab 5
 ### Virtual size
 
