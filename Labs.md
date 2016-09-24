@@ -133,7 +133,7 @@ Using Docker:
 
 To run the image, type in the following:
 
-`docker run -t alexellis2/learnyounodedocker`
+`docker run -t alexellis2/learnyounode`
 
 Breaking it down:
 * `run` looks up the image name to check if it exists in the host's library, if not it will attempt to pull it down from the Hub
