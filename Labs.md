@@ -650,7 +650,7 @@ It helps if a *data-container* derives from the same image as our application, s
 
 **1. Build the image_upload image**
 
-Build the image_upload image from the image_upload folder. This will contain a web-server with an upload photo functionality, but the images will be stored in the data container.
+Build the `image_upload` image from the `Dockerfiles/image_upload` folder in this Github repository. This will contain a web-server with an upload photo functionality, but the images will be stored in the data container.
 
 The Dockerfile reveals that the code is added to /var/web/uploads.
 
