@@ -80,7 +80,7 @@ The IP address for accessing websites etc with be `localhost` or whatever addres
 
 Docker provides a cloud service called *the Hub* where you can pull (download) pre-built images shared by Software vendors and individuals. You won't need an account to pull an image from the Hub. You can also freely push (upload) images that you have created on your local machine if you sign up for a Hub account. You can even link your Hub account to Github to create automated builds for your projects.
 
-Some of the images available are marked as 'Official' which means that they have been produced by a software vendor through an automated script. I would be weary of using images from unknown/unverified sources since they could contain malicious code. Images containing mallicous code are known as *poison images*.
+Some of the images available are marked as 'Official' which means that they have been produced by a software vendor through an automated script. I would be wary of using images from unknown/unverified sources since they could contain malicious code. Images containing mallicous code are known as *poison images*.
 
 > Tools exist to scan images for Common Vulnerabilities and Exposures (CVE), these are important in the enterprise and should be part of your CI workflow. 
 
@@ -153,7 +153,7 @@ You have now pulled an image that someone else created and have run it. Let's go
 
 **Dockerfile**
 
-The *Dockerfile* is synonymous with a *Makefile* in the UNIX world. It contains all the steps needed to build a particular image where each step is run in ahead of time. The first line of the file must always be a `FROM` instruction which tells Docker what image to use as a basis. Dockerfiles can also be derived from a *scratch* image which provides a completely empty system. It won't have a shell or any utilities such as text editors. It is ideal for single, statically-linked binaries such as Docker Swarm.
+The *Dockerfile* is synonymous with a *Makefile* in the UNIX world. It contains all the steps needed to build a particular image where each step is run ahead of time. The first line of the file must always be a `FROM` instruction which tells Docker what image to use as a basis. Dockerfiles can also be derived from a *scratch* image which provides a completely empty system. It won't have a shell or any utilities such as text editors. It is ideal for single, statically-linked binaries such as Docker Swarm.
 
 Create a new directory and then use your favourite text editor to add `app.js`
 
@@ -363,7 +363,7 @@ We will now use a sample solution called NuGetSample which:
 * Builds an executable and library used to give the product of two numbers
 * And executes NUnit tests.
 
-Our Dockerfile will derive from the same image as before, but we will issue and additional command to run NUnit after the `FROM` instruction. NuGet will be invoked automatically on our behalf.
+Our Dockerfile will derive from the same image as before, but we will issue an additional command to run NUnit after the `FROM` instruction. NuGet will be invoked automatically on our behalf.
 
 ```
 FROM mono:3.12.0-onbuild
